@@ -15,9 +15,9 @@ on_project_start:
   - git fetch --prune
   - git checkout develop
   - git merge --ff-only orgin/develop
-  - bin/setup
 # Run on project start, the first time
-# on_project_first_start: command
+on_project_first_start:
+  - bin/setup
 # Run on project start, after the first time
 # on_project_restart: command
 # Run on project exit ( detaching from tmux session )
@@ -48,12 +48,9 @@ on_project_start:
 
 windows:
   - editor:
-      layout: main-vertical
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
       panes:
-        - vim
-        - guard
+        - vim:
+            - nvim
+            - ':vsplit'
   - server: bundle exec rails s
   - logs: tail -f log/development.log
