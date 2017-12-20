@@ -54,8 +54,9 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - nvim
-        - nvim
+          - nvim:
+              - nvim
+              - ':vsplit'
   - vm:
       layout: main-vertical
       root: ~/Documents/metalware/vm/
