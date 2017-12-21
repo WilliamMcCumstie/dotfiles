@@ -1,5 +1,8 @@
 source ~/.vimrc
 
+syntax enable
+set background=dark
+
 set number
 
 filetype plugin indent on
