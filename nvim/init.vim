@@ -9,3 +9,5 @@ set tabstop=2
 set shiftwidth=2
 " On pressing tab, insert 2 spaces
 set expandtab
+
+nmap  -  <Plug>(choosewin)
