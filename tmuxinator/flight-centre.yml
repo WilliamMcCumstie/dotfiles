@@ -54,7 +54,7 @@ windows:
   - server:
       layout: main-vertical
       panes:
-        - bin/rails
+        - bin/rails server
         - bin/webpack-dev-server
   - logs:
       layout: main-vertical
