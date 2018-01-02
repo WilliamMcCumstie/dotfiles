@@ -60,5 +60,5 @@ windows:
   - logs:
       layout: main-vertical
       panes:
-        -
+        - bin/rails console
         -
