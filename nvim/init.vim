@@ -36,6 +36,7 @@ Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'ElmCast/elm-vim'
 
 call plug#end()
 
