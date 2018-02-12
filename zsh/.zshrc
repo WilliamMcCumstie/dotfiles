@@ -88,7 +88,7 @@ export EDITOR=$VISUAL
 #Make EMACS respect zsh
 [[ $EMACS = t ]] && unsetopt zle
 
-export PATH=/home/william/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/share/rvm/bin:/home/william/.vimpkg/bin
+export PATH=/home/william/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/share/rvm/bin:/home/william/.local/bin:/home/william/.vimpkg/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -98,3 +98,5 @@ export PATH=/home/william/.rvm/gems/ruby-2.4.1/bin:/home/william/.rvm/gems/ruby-
 
 alias mux=tmuxinator
 
+
+eval $(thefuck --alias)

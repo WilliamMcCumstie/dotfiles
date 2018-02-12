@@ -40,6 +40,11 @@ Plug 'ElmCast/elm-vim'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-peekaboo'
 Plug 'alvan/vim-closetag'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-rails'
+Plug 'sjl/gundo.vim'
 
 call plug#end()
 
@@ -466,4 +471,13 @@ let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 "
 let g:closetag_close_shortcut = '<leader>>'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-closetag
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
