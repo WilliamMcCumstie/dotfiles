@@ -446,9 +446,22 @@ let g:lightline = {
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
+function MaxGitNameLength()
+  return float2nr(winwidth(0)*0.8)
+endfunction
+
 function LightlineFugitive()
-  let max_length = float2nr(winwidth(0)*0.15)
   let branch = exists("*fugitive#head")?fugitive#head():""
+  if strlen(branch) + strlen(@%) < MaxGitNameLength()
+    return branch
+  endif
+  let min_length = float2nr(MaxGitNameLength()*0.15)
+  let length_less_name = MaxGitNameLength() - strlen(@%)
+  if min_length > length_less_name
+    let max_length = min_length
+  else
+    let max_length = length_less_name
+  endif
   if strlen(branch) > max_length
     let branch = split(branch, '/')[-1]
   endif
