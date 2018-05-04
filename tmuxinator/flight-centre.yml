@@ -15,8 +15,6 @@ root: ~/Documents/alces-flight-center/
 # Run on project start, the first time
 on_project_first_start:
   - git fetch --prune
-  - git checkout develop
-  - git merge --ff-only orgin/develop
 # Run on project start, after the first time
 # on_project_restart: command
 # Run on project exit ( detaching from tmux session )

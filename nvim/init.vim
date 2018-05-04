@@ -45,6 +45,8 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-rails'
 Plug 'sjl/gundo.vim'
+Plug 'rhysd/committia.vim'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -422,10 +424,6 @@ map <leader>nf :NERDTreeFind<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
       \ 'colorscheme': 'wombat',
-      \ }
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
       \             ['fugitive', 'readonly', 'filename', 'modified'] ],
@@ -445,6 +443,7 @@ let g:lightline = {
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
+set noshowmode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-closetag
@@ -474,10 +473,17 @@ let g:closetag_close_shortcut = '<leader>>'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-closetag
+" => snipMate
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:snipMate = get(g:, 'snipMate', {}) " Allow for vimrc re-sourcing
 let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Gundo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <F5> :GundoToggle<CR>
 
