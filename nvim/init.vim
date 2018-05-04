@@ -462,7 +462,7 @@ function LightlineFugitive()
   else
     let max_length = length_less_name
   endif
-  if strlen(branch) > max_length
+  if (strlen(branch) > max_length) && (len(split(branch, '/'))>1)
     let branch = '../' . split(branch, '/')[-1]
   endif
   if strlen(branch) > max_length
