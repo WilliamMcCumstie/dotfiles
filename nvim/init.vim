@@ -447,7 +447,7 @@ let g:lightline = {
       \ }
 
 function MaxGitNameLength()
-  return winwidth(0) - 26
+  return winwidth(0) - 30
 endfunction
 
 function LightlineFugitive()
