@@ -456,7 +456,7 @@ function LightlineFugitive()
     return branch
   endif
   let min_length = float2nr(MaxGitNameLength()*0.30)
-  let length_less_name = MaxGitNameLength() - strlen(@%)
+  let length_less_name = MaxGitNameLength() - strlen(@%) - 2
   if min_length > length_less_name
     let max_length = min_length
   else
