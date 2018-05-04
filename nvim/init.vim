@@ -431,11 +431,11 @@ let g:lightline = {
       \ },
       \ 'component': {
       \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
+      \   'fugitive': 'LightlineFugitive',
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -445,6 +445,18 @@ let g:lightline = {
       \ 'separator': { 'left': ' ', 'right': ' ' },
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
+
+function LightlineFugitive()
+  let max_length = float2nr(winwidth(0)*0.15)
+  let branch = exists("*fugitive#head")?fugitive#head():""
+  if strlen(branch) > max_length
+    let branch = split(branch, '/')[-1]
+  endif
+  if strlen(branch) > max_length
+    let branch = join([branch[0:(max_length-2)], '.'], '.')
+  endif
+  return branch
+endfunction
 
 function! LightlineFilename()
   let max_length = 30
