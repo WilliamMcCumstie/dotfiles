@@ -447,7 +447,7 @@ let g:lightline = {
       \ }
 
 function MaxGitNameLength()
-  return winwidth(0) - 40
+  return winwidth(0) - 26
 endfunction
 
 function LightlineFugitive()
@@ -466,7 +466,7 @@ function LightlineFugitive()
     let branch = split(branch, '/')[-1]
   endif
   if strlen(branch) > max_length
-    let branch = join([branch[0:(max_length-2)], '.'], '.')
+    let branch = branch[0:(max_length-2)] . '..'
   endif
   return branch
 endfunction
@@ -474,13 +474,8 @@ endfunction
 function! LightlineFilename()
   let max_length = MaxGitNameLength() - strlen(LightlineFugitive()) - 2
   let path = @%
-  let path_arr = split(path, '/')
-  while (strlen(path) > max_length) && ( len(path_arr) > 1)
-    let path = join(path_arr[1:-1], '/')
-    let path_arr = split(path, '/')
-  endwhile
-  if @% != path
-    let path = join(['...', path], '/')
+  if strlen(path) > max_length
+    let path = '...' . path[0-max_length+3:-1]
   endif
   return path
 endfunction
