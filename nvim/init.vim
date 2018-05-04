@@ -434,6 +434,9 @@ let g:lightline = {
       \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
       \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
@@ -442,6 +445,20 @@ let g:lightline = {
       \ 'separator': { 'left': ' ', 'right': ' ' },
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
+
+function! LightlineFilename()
+  let max_length = 30
+  let path = @%
+  let path_arr = split(path, '/')
+  while (strlen(path) > max_length) && ( len(path_arr) > 1)
+    let path = join(path_arr[1:-1], '/')
+    let path_arr = split(path, '/')
+  endwhile
+  if @% != path
+    let path = join(['...', path], '/')
+  endif
+  return path
+endfunction
 
 set noshowmode
 
