@@ -426,12 +426,11 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
+      \             ['fugitive', 'readonly', 'filename'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'] ]
       \ },
       \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}'
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
@@ -439,7 +438,6 @@ let g:lightline = {
       \ },
       \ 'component_visible_condition': {
       \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
       \ },
       \ 'separator': { 'left': ' ', 'right': ' ' },
@@ -447,7 +445,7 @@ let g:lightline = {
       \ }
 
 function MaxGitNameLength()
-  return winwidth(0) - 33
+  return winwidth(0) - 30
 endfunction
 
 function LightlineFugitive()
