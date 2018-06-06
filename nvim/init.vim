@@ -47,8 +47,13 @@ Plug 'tpope/vim-rails'
 Plug 'sjl/gundo.vim'
 Plug 'rhysd/committia.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'victorfeijo/binding-pry-vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'Yggdroot/indentLine'
+Plug 'elzr/vim-json'
 
 call plug#end()
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -71,7 +76,7 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 " command W w !sudo tee % > /dev/null
 
@@ -108,23 +113,23 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -154,7 +159,7 @@ iabbrev </ </<C-X><C-O>
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -250,8 +255,8 @@ map <leader>h :bprevious<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -266,7 +271,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -318,7 +323,7 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
@@ -366,7 +371,7 @@ map <leader>e :e! ~/.config/nvim/init.vim<cr>
 autocmd! bufwritepost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Turn persistent undo on 
+" => Turn persistent undo on
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
@@ -385,7 +390,7 @@ cno $j e ./
 cno $c e <C-\>eCurrentFileDir("e")<cr>
 
 " $q is super useful when browsing on the command line
-" it deletes everything until the last slash 
+" it deletes everything until the last slash
 cno $q <C-\>eDeleteTillSlash()<cr>
 
 " Bash like keys for the command line
@@ -521,4 +526,20 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nnoremap <F5> :GundoToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => indentLine
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:indentLine_char = '┆'
+let g:indentLine_color_term = 239
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vimJson
+" Stops the quotes being concealed by indentLine
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+let g:vim_json_syntax_conceal = 0
 
