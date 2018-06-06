@@ -99,5 +99,6 @@ export PATH=/home/william/.rvm/gems/ruby-2.4.1/bin:/home/william/.rvm/gems/ruby-
 alias mux=tmuxinator
 
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+export GOPATH=$HOME/go_workshop:$GOPATH
 
 eval $(thefuck --alias)
