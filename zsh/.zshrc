@@ -102,3 +102,8 @@ alias mux=tmuxinator
 export GOPATH=$HOME/go_workshop:$GOPATH
 
 eval $(thefuck --alias)
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/william/go_workshop/bin/gocomplete go
+
+source /usr/share/rvm/scripts/rvm
