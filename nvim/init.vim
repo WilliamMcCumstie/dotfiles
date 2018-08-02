@@ -81,7 +81,7 @@ nmap <leader>w :w!<cr>
 " command W w !sudo tee % > /dev/null
 
 " Spell check on
-set spell spelllang=en_us
+set spell spelllang=en_gb
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface

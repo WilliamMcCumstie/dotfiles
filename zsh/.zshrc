@@ -109,7 +109,7 @@ complete -o nospace -C /home/william/go_workshop/bin/gocomplete go
 source /usr/share/rvm/scripts/rvm
 
 # Sources the aws credentials
-cred_path=~/.aws/credentials.sh
+cred_path=~/.credentials.sh
 if [ -f "$cred_path" ]; then
   source $cred_path
 fi
