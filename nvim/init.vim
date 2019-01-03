@@ -51,7 +51,11 @@ Plug 'victorfeijo/binding-pry-vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Yggdroot/indentLine'
 Plug 'elzr/vim-json'
-
+Plug 'shime/vim-livedown'
+Plug 'rhysd/vim-crystal'
+Plug 'rhysd/vim-gfm-syntax'
+Plug 'joker1007/vim-ruby-heredoc-syntax'
+ 
 call plug#end()
 
 
@@ -543,3 +547,14 @@ let g:indentLine_color_term = 239
 
 let g:vim_json_syntax_conceal = 0
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-ruby-heredoc-syntax
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+let g:ruby_heredoc_syntax_filetypes = {
+        \ "eruby" : {
+        \   "start" : "ERB",
+        \},
+  \}

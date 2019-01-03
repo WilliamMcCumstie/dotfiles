@@ -55,8 +55,8 @@ windows:
   - vm:
       layout: main-vertical
       panes:
-        - vagrant ssh
-        - vagrant ssh
+        - cd /var/lib/libvirt/images
+        - cd /var/lib/libvirt/images
   - git:
       layout: main-vertical
       panes:
