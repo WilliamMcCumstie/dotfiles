@@ -199,6 +199,9 @@ set nobackup
 set nowb
 set noswapfile
 
+autocmd BufWritePost * GitGutter
+autocmd BufEnter * GitGutter
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

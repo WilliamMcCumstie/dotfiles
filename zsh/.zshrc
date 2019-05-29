@@ -94,12 +94,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+my_go=$HOME/go_workshop
+export GOPATH=$my_go:$GOPATH
+
+export PATH=$PATH:$my_go/bin
 export PATH=/home/william/.rvm/gems/ruby-2.4.1/bin:/home/william/.rvm/gems/ruby-2.4.1@global/bin:/usr/share/rvm/rubies/ruby-2.4.1/bin:$PATH
 
 alias mux=tmuxinator
-
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-export GOPATH=$HOME/go_workshop:$GOPATH
 
 eval $(thefuck --alias)
 
