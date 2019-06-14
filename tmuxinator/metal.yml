@@ -1,7 +1,7 @@
 # ~/.tmuxinator/metalware.yml
 
-name: metalware
-root: ~/Documents/metalware/git/
+name: metal
+root: ~/Documents/flight-metal
 
 # Optional tmux socket
 # socket_name: foo
@@ -11,7 +11,7 @@ root: ~/Documents/metalware/git/
 
 # Project hooks
 # Runs on project start, always
-# on_project_start:
+on_project_start: virsh start master 2>/dev/null
 # Run on project start, the first time
 # on_project_first_start: command
 # Run on project start, after the first time
@@ -19,7 +19,7 @@ root: ~/Documents/metalware/git/
 # Run on project exit ( detaching from tmux session )
 # on_project_exit: command
 # Run on project stop
-on_project_stop: vagrant suspend
+# on_project_stop: vagrant suspend
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -42,14 +42,8 @@ startup_window: git
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t metalware
 
-anchors:
-  - &ssh-vm-metalware
-    - ssh vm-metalware
-    - cd /tmp/metalware
-
 windows:
   - editor:
-      layout: main-vertical
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
@@ -58,21 +52,24 @@ windows:
               - nvim
               - ':vsplit'
   - vm:
-      layout: main-vertical
-      root: ~/Documents/metalware/vm/
+      layout: a68c,204x61,0,0{101x61,0,0,26,102x61,102,0[102x30,102,0,28,102x30,102,31,31]}
+      root: ~/Documents/flight-metal
       panes:
         - vm0:
-            - ssh vm-metalware
-            - cd /tmp/metalware
-            - clear
-            - pwd
+          - ssh master
+          - cd /host/flight-metal
+          - clear
         - vm1:
-            - ssh vm-metalware
-            - cd /var/lib/metalware/
-            - clear
-            - pwd
+          - ssh master
+          - cd /host/flight-metal
+          - clear
+          - tail -f var/log/metal.log
+        - vm2:
+          - ssh master
+          - cd /host/flight-metal
+          - clear
   - git:
-      layout: main-vertical
+      layout: even-horizontal
       panes:
         -
         -
