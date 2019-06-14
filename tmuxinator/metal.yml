@@ -56,15 +56,18 @@ windows:
       root: ~/Documents/flight-metal
       panes:
         - vm0:
+          - assh ping -o master
           - ssh master
           - cd /host/flight-metal
           - clear
         - vm1:
+          - assh ping -o master
           - ssh master
           - cd /host/flight-metal
           - clear
           - tail -f var/log/metal.log
         - vm2:
+          - assh ping -o master
           - ssh master
           - cd /host/flight-metal
           - clear
