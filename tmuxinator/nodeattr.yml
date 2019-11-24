@@ -1,7 +1,7 @@
-# ~/.tmuxinator/metalware.yml
+# ~/.tmuxinator/nodeattrware.yml
 
-name: metal
-root: ~/Documents/metal-server
+name: nodeattr
+root: ~/Documents/nodeattr-server
 
 # Optional tmux socket
 # socket_name: foo
@@ -40,7 +40,7 @@ startup_window: git
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t metalware
+# post: tmux -CC attach -t nodeattrware
 
 windows:
   - editor:
@@ -53,23 +53,23 @@ windows:
               - ':vsplit'
   - vm:
       layout: a68c,204x61,0,0{101x61,0,0,26,102x61,102,0[102x30,102,0,28,102x30,102,31,31]}
-      root: ~/Documents/metal-server
+      root: ~/Documents/nodeattr-server
       panes:
         - vm0:
           - assh ping -o master
           - ssh master
-          - cd /host/metal-server
+          - cd /host/nodeattr-server
           - clear
         - vm1:
           - assh ping -o master
           - ssh master
-          - cd /host/metal-server
+          - cd /host/nodeattr-server
           - clear
-          - tail -f var/log/metal.log
+          - bin/puma -p 8080
         - vm2:
           - assh ping -o master
           - ssh master
-          - cd /host/metal-server
+          - cd /host/nodeattr-server
           - clear
   - git:
       layout: even-horizontal

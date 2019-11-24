@@ -49,6 +49,7 @@ Plug 'rhysd/committia.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'victorfeijo/binding-pry-vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'chr4/nginx.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'elzr/vim-json'
 Plug 'shime/vim-livedown'
@@ -86,6 +87,9 @@ nmap <leader>w :w!<cr>
 
 " Spell check on
 set spell spelllang=en_gb
+
+" Escape from terminals using Esc
+tnoremap <Esc> <C-\><C-n>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface

@@ -1,7 +1,7 @@
-# ~/.tmuxinator/metalware.yml
+# ~/.tmuxinator/cloudware.yml
 
-name: metal
-root: ~/Documents/metal-server
+name: manage
+root: ~/Documents/management-server
 
 # Optional tmux socket
 # socket_name: foo
@@ -11,7 +11,7 @@ root: ~/Documents/metal-server
 
 # Project hooks
 # Runs on project start, always
-on_project_start: virsh start master 2>/dev/null
+# on_project_start: command
 # Run on project start, the first time
 # on_project_first_start: command
 # Run on project start, after the first time
@@ -19,7 +19,7 @@ on_project_start: virsh start master 2>/dev/null
 # Run on project exit ( detaching from tmux session )
 # on_project_exit: command
 # Run on project stop
-# on_project_stop: vagrant suspend
+on_project_stop: vagrant suspend
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -31,7 +31,7 @@ on_project_start: virsh start master 2>/dev/null
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-startup_window: git
+# startup_window: editor
 
 # Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
 # startup_pane: 1
@@ -40,37 +40,30 @@ startup_window: git
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t metalware
+# post: tmux -CC attach -t cloudware
 
 windows:
   - editor:
+      layout: main-vertical
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-          - nvim:
-              - nvim
-              - ':vsplit'
-  - vm:
-      layout: a68c,204x61,0,0{101x61,0,0,26,102x61,102,0[102x30,102,0,28,102x30,102,31,31]}
-      root: ~/Documents/metal-server
+        - nvim:
+            - nvim
+            - ':vsplit'
+  - cli:
+      layout: even-horizontal
       panes:
         - vm0:
           - assh ping -o master
           - ssh master
-          - cd /host/metal-server
-          - clear
+          - cd /host/management-server
+          - bin/server
         - vm1:
           - assh ping -o master
           - ssh master
-          - cd /host/metal-server
-          - clear
-          - tail -f var/log/metal.log
-        - vm2:
-          - assh ping -o master
-          - ssh master
-          - cd /host/metal-server
-          - clear
+          - cd /host/management-server
   - git:
       layout: even-horizontal
       panes:

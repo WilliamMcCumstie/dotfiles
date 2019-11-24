@@ -1,7 +1,7 @@
 # ~/.tmuxinator/metalware.yml
 
 name: metal
-root: ~/Documents/metal-server
+root: ~/Documents/flight-cloud
 
 # Optional tmux socket
 # socket_name: foo
@@ -53,23 +53,22 @@ windows:
               - ':vsplit'
   - vm:
       layout: a68c,204x61,0,0{101x61,0,0,26,102x61,102,0[102x30,102,0,28,102x30,102,31,31]}
-      root: ~/Documents/metal-server
       panes:
         - vm0:
           - assh ping -o master
           - ssh master
-          - cd /host/metal-server
+          - cd /host/flight-cloud
           - clear
         - vm1:
           - assh ping -o master
           - ssh master
-          - cd /host/metal-server
+          - cd /host/flight-cloud
           - clear
-          - tail -f var/log/metal.log
+          - tail -f log/cloud.log
         - vm2:
           - assh ping -o master
           - ssh master
-          - cd /host/metal-server
+          - cd /host/flight-cloud
           - clear
   - git:
       layout: even-horizontal
