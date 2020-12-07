@@ -442,7 +442,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename'] ],
+      \             ['readonly', 'filename'] ],
       \   'right': [ [ 'lineinfo' ], ['percent'] ]
       \ },
       \ 'component': {
@@ -450,48 +450,16 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
-      \   'fugitive': 'LightlineFugitive',
       \ },
       \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \   'readonly': '(&filetype!="help"&& &readonly)'
       \ },
       \ 'separator': { 'left': ' ', 'right': ' ' },
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
-function MaxGitNameLength()
-  return winwidth(0) - 30
-endfunction
-
-function LightlineFugitive()
-  let branch = exists("*fugitive#head")?fugitive#head():""
-  if strlen(branch) + strlen(@%) < MaxGitNameLength()
-    return branch
-  endif
-  let min_length = float2nr(MaxGitNameLength()*0.30)
-  let length_less_name = MaxGitNameLength() - strlen(@%) - 2
-  if min_length > length_less_name
-    let max_length = min_length
-  else
-    let max_length = length_less_name
-  endif
-  if (strlen(branch) > max_length) && (len(split(branch, '/'))>1)
-    let branch = '../' . split(branch, '/')[-1]
-  endif
-  if strlen(branch) > max_length
-    let branch = branch[0:(max_length-2)] . '..'
-  endif
-  return branch
-endfunction
-
 function! LightlineFilename()
-  let max_length = MaxGitNameLength() - strlen(LightlineFugitive()) - 2
-  let path = @%
-  if strlen(path) > max_length
-    let path = '...' . path[0-max_length+3:-1]
-  endif
-  return path
+  return @%
 endfunction
 
 set noshowmode
