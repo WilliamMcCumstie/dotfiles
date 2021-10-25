@@ -90,30 +90,30 @@ export EDITOR=$VISUAL
 
 # export PATH=/home/william/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/share/rvm/bin:/home/william/.local/bin:/home/william/.vimpkg/bin
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-my_go=$HOME/go_workshop
-export GOPATH=$my_go:$GOPATH
+# [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+# my_go=$HOME/go_workshop
+# export GOPATH=$my_go:$GOPATH
 
-export PATH=$PATH:$my_go/bin
+# export PATH=$PATH:$my_go/bin
 
-alias mux=tmuxinator
+# alias mux=tmuxinator
 
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/william/go_workshop/bin/gocomplete go
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /home/william/go_workshop/bin/gocomplete go
 
-source /usr/share/rvm/scripts/rvm
+# source /usr/share/rvm/scripts/rvm
 
 # Sources the aws credentials
-cred_path=~/.credentials/setup.sh
-if [ -f "$cred_path" ]; then
-  source $cred_path
-fi
+# cred_path=~/.credentials/setup.sh
+# if [ -f "$cred_path" ]; then
+#   source $cred_path
+# fi
 
-alias python=python3
+# alias python=python3
 
