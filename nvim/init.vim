@@ -13,42 +13,52 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-if has('nvim')
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  " Plug 'Shougo/deoplete.nvim'
-  " Plug 'roxma/nvim-yarp'
-  " Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" REQUIREMENTS
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
 
-let g:deoplete#enable_at_startup = 1
-
-" Plug 'mileszs/ack.vim'
-Plug 'kien/ctrlp.vim'
+" VISUAL
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'ntpeters/vim-better-whitespace'
+
+" LINTERS
+Plug 'keith/rspec.vim'
+
+" COMPLETION
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+" * vim-snipmate requires: tlib_vim, vim-addon-mw-utils
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+
+" NAVIGATION
+Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'christoomey/vim-tmux-navigator'
+
+" COPY/PASTE
+Plug 'junegunn/vim-peekaboo'
+
+" GIT
+Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/committia.vim'
+Plug 'tpope/vim-fugitive'
+
+" MISC UTILS
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+ 
+" Plug 'mileszs/ack.vim'
 " Plug 'vim-syntastic/syntastic'
 " Plug 'godlygeek/tabular'
-" Plug 'tomtom/tlib_vim'
 " Plug 't9md/vim-choosewin'
-" Plug 'tpope/vim-commentary'
-Plug 'airblade/vim-gitgutter'
-Plug 'christoomey/vim-tmux-navigator'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'ElmCast/elm-vim'
-" Plug 'tpope/vim-surround'
-" Plug 'junegunn/vim-peekaboo'
 " Plug 'alvan/vim-closetag'
-" Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'garbas/vim-snipmate'
-" Plug 'honza/vim-snippets'
 " Plug 'tpope/vim-rails'
-Plug 'sjl/gundo.vim'
-" Plug 'rhysd/committia.vim'
-" Plug 'tpope/vim-fugitive'
 " Plug 'victorfeijo/binding-pry-vim'
-" Plug 'ntpeters/vim-better-whitespace'
 " Plug 'chr4/nginx.vim'
 " Plug 'Yggdroot/indentLine'
 " Plug 'elzr/vim-json'
@@ -59,6 +69,9 @@ Plug 'sjl/gundo.vim'
  
 call plug#end()
 
+for f in split(glob('~/.config/nvim/init.d/*'), '\n')
+  exe 'source' f
+endfor
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -162,6 +175,7 @@ vnoremap < <gv
 
 " Autocomplete html
 iabbrev </ </<C-X><C-O>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts

@@ -9,6 +9,10 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="gallois"
 
+# Disable the ruby prompt
+function ruby_prompt_info {
+}
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -51,7 +55,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode thefuck)
+# plugins=(git vi-mode thefuck)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,6 +98,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Add DENO
+export DENO_INSTALL="/home/william/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 # [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 # my_go=$HOME/go_workshop
 # export GOPATH=$my_go:$GOPATH
@@ -118,3 +126,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # alias python=python3
 
+export SCOUT_ALGOLIA_SUFFIX=_WJM
