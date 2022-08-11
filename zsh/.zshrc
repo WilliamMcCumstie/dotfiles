@@ -101,6 +101,7 @@ export NVM_DIR="$HOME/.nvm"
 # Add DENO
 export DENO_INSTALL="/home/william/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH=$PATH:~/go/bin
 
 # [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 # my_go=$HOME/go_workshop
@@ -127,3 +128,6 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # alias python=python3
 
 export SCOUT_ALGOLIA_SUFFIX=_WJM
+
+# Work around pry bug where it overrides less
+export PAGER="$(which less) -SFrX"

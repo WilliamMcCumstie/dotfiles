@@ -28,9 +28,15 @@ Plug 'keith/rspec.vim'
 " COMPLETION
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
 " * vim-snipmate requires: tlib_vim, vim-addon-mw-utils
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
+
+" React completion
+Plug 'SirVer/ultisnips'
+Plug 'justinj/vim-react-snippets'
 
 " NAVIGATION
 Plug 'kien/ctrlp.vim'
@@ -48,8 +54,9 @@ Plug 'tpope/vim-fugitive'
 " MISC UTILS
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-commentary'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-surround'
- 
+
 " Plug 'mileszs/ack.vim'
 " Plug 'vim-syntastic/syntastic'
 " Plug 'godlygeek/tabular'
@@ -432,11 +439,13 @@ cnoremap <C-N> <Down>
 let g:ctrlp_working_path_mode = 0
 
 let g:ctrlp_map = '<c-f>'
+let g:ctrlp_cmd = 'CtrlP'
 map <leader>j :CtrlP<cr>
 map <c-b> :CtrlPBuffer<cr>
 
 let g:ctrlp_max_height = 20
 let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+let g:ctrlp_user_command = 'find %s -type f'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
@@ -547,3 +556,11 @@ let g:ruby_heredoc_syntax_filetypes = {
         \   "start" : "ERB",
         \},
   \}
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Deoplete Fixes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" See: https://github.com/carlitux/deoplete-ternjs/issues/88
+
+call deoplete#custom#option('num_processes', 4)
