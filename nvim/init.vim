@@ -31,24 +31,24 @@ Plug 'scrooloose/nerdtree'
 " Plug 'vim-syntastic/syntastic'
 " Plug 'godlygeek/tabular'
 " Plug 'tomtom/tlib_vim'
-" Plug 't9md/vim-choosewin'
-" Plug 'tpope/vim-commentary'
+Plug 't9md/vim-choosewin'
+Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 " Plug 'maxbrunsfeld/vim-yankstack'
 " Plug 'ElmCast/elm-vim'
-" Plug 'tpope/vim-surround'
-" Plug 'junegunn/vim-peekaboo'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/vim-peekaboo'
 " Plug 'alvan/vim-closetag'
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'garbas/vim-snipmate'
 " Plug 'honza/vim-snippets'
 " Plug 'tpope/vim-rails'
-Plug 'sjl/gundo.vim'
-" Plug 'rhysd/committia.vim'
-" Plug 'tpope/vim-fugitive'
-" Plug 'victorfeijo/binding-pry-vim'
-" Plug 'ntpeters/vim-better-whitespace'
+Plug 'mbbill/undotree'
+Plug 'rhysd/committia.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'victorfeijo/binding-pry-vim'
+Plug 'ntpeters/vim-better-whitespace'
 " Plug 'chr4/nginx.vim'
 " Plug 'Yggdroot/indentLine'
 " Plug 'elzr/vim-json'
@@ -77,9 +77,6 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
-
-" Fast saving
-nmap <leader>w :w!<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -240,10 +237,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
@@ -291,6 +284,29 @@ endtry
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+" Moving Around Splits
+nmap <A-Up> <C-w>k
+nmap <A-Down> <C-w>j
+nmap <A-Left> <C-w>h
+nmap <A-Right> <C-w>l
+
+" Creating Splits
+nmap <A-s><Left> <C-w>v
+nmap <A-s><Right> <C-w>v<A-Right>
+nmap <A-s><Up> <C-w>s
+nmap <A-s><Down> <C-w>s<A-Down>
+
+" Resize splits
+nmap <A- > <C-w>
+nmap <A-S-=> <C-w>=
+nmap <A-=> <C-w>+
+nmap <A--> <C-w>-
+nmap <A-,> <C-w><
+nmap <A-.> <C-w>>
+nmap <A-S--> <C-w>_
+nmap <A-S-\> <C-w>\|
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -404,14 +420,6 @@ cno $c e <C-\>eCurrentFileDir("e")<cr>
 " it deletes everything until the last slash
 cno $q <C-\>eDeleteTillSlash()<cr>
 
-" Bash like keys for the command line
-cnoremap <C-A>		<Home>
-cnoremap <C-E>		<End>
-cnoremap <C-K>		<C-U>
-
-cnoremap <C-P> <Up>
-cnoremap <C-N> <Down>
-
 """"""""""""""""""""""""""""""
 " => CTRL-P
 """"""""""""""""""""""""""""""
@@ -501,10 +509,10 @@ let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Gundo
+" => UndoTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> :UndotreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => indentLine
