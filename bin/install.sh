@@ -38,7 +38,6 @@ else
   ln -s "$SWAY_SRC" "$SWAY_DST"
 fi
 
-
 SWAY_LIBEXEC_SRC="$ROOT/sway/libexec"
 SWAY_LIBEXEC_DST="$XDG_LIBEXEC_HOME/sway"
 if [ -e "$SWAY_LIBEXEC_DST" ]; then
@@ -50,3 +49,27 @@ else
   ln -s "$SWAY_LIBEXEC_SRC" "$SWAY_LIBEXEC_DST"
 fi
 
+# Symlink distro files into place
+DISTRO="$(grep "^ID" /etc/os-release | cut -f2 -d=)"
+DISTRO_ROOT="$ROOT/dist/$DISTRO"
+for SRC in $(find "$DISTRO_ROOT" -type f); do
+  DST=$(echo "$SRC" | sed "s#^$DISTRO_ROOT##")
+  LNK="$ROOT/dist/.root$DST"
+
+  if [ -e "$LNK" ]; then
+    echo "Updating: $LNK"
+  else
+    echo "Creating: $LNK"
+  fi
+  mkdir -p $(dirname "$LNK")
+  sudo cp -f "$SRC" "$LNK"
+  sudo chown root:root "$LNK"
+
+  if [ -e "$DST" ]; then
+    echo "Skipping: $DST"
+  else
+    echo "Creating: $DST"
+    mkdir -p $(dirname "$DST")
+    sudo ln -s "$LNK" "$DST"
+  fi
+done
