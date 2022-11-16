@@ -100,6 +100,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add DENO
 export DENO_INSTALL="/home/william/.deno"
+export PATH=~/ruby/bin:$PATH
+export PATH=$PATH:~/bin
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:~/go/bin
 
@@ -130,4 +132,6 @@ export PATH=$PATH:~/go/bin
 export SCOUT_ALGOLIA_SUFFIX=_WJM
 
 # Work around pry bug where it overrides less
-export PAGER="$(which less) -SFrX"
+# export PAGER="$(which less) -SFrX"
+
+DISABLE_SPRING=true
