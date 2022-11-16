@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
+# ZSH=/usr/share/oh-my-zsh/
+ZSH=~/.oh-my-zsh/
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -115,3 +116,5 @@ else
   export VISUAL='nvim'
 fi
 export EDITOR=$VISUAL
+
+PATH=~/ruby/bin:$PATH
