@@ -293,10 +293,10 @@ nmap <A-Left> <C-w>h
 nmap <A-Right> <C-w>l
 
 " Creating Splits
-nmap <A-s><Left> <C-w>v
-nmap <A-s><Right> <C-w>v<A-Right>
-nmap <A-s><Up> <C-w>s
-nmap <A-s><Down> <C-w>s<A-Down>
+nmap <M-S-Left> <C-w>v
+nmap <M-S-Right> <C-w>v<A-Right>
+nmap <M-S-Up> <C-w>s
+nmap <M-S-Down> <C-w>s<A-Down>
 
 " Resize splits
 nmap <A- > <C-w>

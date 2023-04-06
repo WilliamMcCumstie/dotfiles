@@ -117,4 +117,11 @@ else
 fi
 export EDITOR=$VISUAL
 
-PATH=~/ruby/bin:$PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+SCOUT_ALGOLIA_SUFFIX=_WJM
+
+eval $(thefuck --alias)
