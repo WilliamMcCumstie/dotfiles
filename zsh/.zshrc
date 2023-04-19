@@ -125,3 +125,9 @@ export NVM_DIR="$HOME/.nvm"
 SCOUT_ALGOLIA_SUFFIX=_WJM
 
 eval $(thefuck --alias)
+
+export NODE_OPTIONS=--openssl-legacy-provider
+
+export DENO_INSTALL="/home/william/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+

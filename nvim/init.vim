@@ -21,14 +21,22 @@ else
   " Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
+
+Plug 'Shougo/ddc.vim', { 'branch': 'main' }
+Plug 'vim-denops/denops.vim', { 'branch': 'main' }
+Plug 'Shougo/ddc-ui-native', { 'branch': 'main' }
+Plug 'Shougo/ddc-source-around', { 'branch': 'main' }
+Plug 'Shougo/ddc-matcher_head', { 'branch': 'main' }
+Plug 'Shougo/ddc-sorter_rank', { 'branch': 'main' }
+Plug 'Shougo/ddc-source-cmdline', { 'branch': 'main' }
 
 " Plug 'mileszs/ack.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
-" Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic'
 " Plug 'godlygeek/tabular'
 " Plug 'tomtom/tlib_vim'
 Plug 't9md/vim-choosewin'
@@ -39,7 +47,7 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'ElmCast/elm-vim'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'alvan/vim-closetag'
+Plug 'alvan/vim-closetag'
 " Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'garbas/vim-snipmate'
 " Plug 'honza/vim-snippets'
@@ -57,6 +65,7 @@ Plug 'ntpeters/vim-better-whitespace'
 " Plug 'rhysd/vim-gfm-syntax'
 " Plug 'joker1007/vim-ruby-heredoc-syntax'
  
+Plug 'github/copilot.vim'
 call plug#end()
 
 
@@ -541,3 +550,63 @@ let g:ruby_heredoc_syntax_filetypes = {
         \   "start" : "ERB",
         \},
   \}
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => DDC completion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Customize global settings
+
+" You must set the default ui.
+" Note: native ui
+" https://github.com/Shougo/ddc-ui-native
+call ddc#custom#patch_global('ui', 'native')
+
+" Use around source.
+" https://github.com/Shougo/ddc-source-around
+call ddc#custom#patch_global('sources', ['around'])
+
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', #{
+      \ _: #{
+      \   matchers: ['matcher_head'],
+      \   sorters: ['sorter_rank']},
+      \ })
+
+" Change source options
+call ddc#custom#patch_global('sourceOptions', #{
+      \   around: #{ mark: 'A' },
+      \ })
+call ddc#custom#patch_global('sourceParams', #{
+      \   around: #{ maxSize: 500 },
+      \ })
+
+" Customize settings on a filetype
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sources',
+      \ ['around', 'clangd'])
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', #{
+      \   clangd: #{ mark: 'C' },
+      \ })
+call ddc#custom#patch_filetype('markdown', 'sourceParams', #{
+      \   around: #{ maxSize: 100 },
+      \ })
+
+" Mappings
+
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+
+" Continue to display copilot
+let g:copilot_hide_during_completion = 0
+
+" Use ddc.
+call ddc#enable()
