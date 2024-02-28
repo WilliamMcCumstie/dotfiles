@@ -131,3 +131,11 @@ export NODE_OPTIONS=--openssl-legacy-provider
 export DENO_INSTALL="/home/william/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export PATH=$PATH:~/riot/bin
+
+export SCOUT_PROCFILE=Procfile.services.dev
+export PIPENV_DOTENV_LOCATION=.env.dev

@@ -63,9 +63,17 @@ Plug 'ntpeters/vim-better-whitespace'
 " Plug 'shime/vim-livedown'
 " Plug 'rhysd/vim-crystal'
 " Plug 'rhysd/vim-gfm-syntax'
-" Plug 'joker1007/vim-ruby-heredoc-syntax'
+Plug 'joker1007/vim-ruby-heredoc-syntax'
+Plug 'hashivim/vim-terraform'
+
+Plug 'noprompt/vim-yardoc'
+
+Plug 'isRuslan/vim-es6'
  
-Plug 'github/copilot.vim'
+Plug 'github/copilot.vim', { 'branch': 'release' }
+
+Plug 'diepm/vim-rest-console'
+
 call plug#end()
 
 
